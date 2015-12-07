@@ -22,12 +22,15 @@ public class KeyGenerator {
         }
         this.masterKey = new BigInteger(masterKey,16).toByteArray();
         this.chainCode = md.digest(chainCode.getBytes());
-
+        
         generatePrivateKey();
     }
 
     private void generatePrivateKey(){
-        // TODO some derivation here
+        DeterministicKey dk = HDKeyDerivation.createMasterPrivKeyFromBytes(masterKey,chainCode);
+        dk = HDKeyDerivation.deriveChildKey(dk,0);
+        privateKey = dk.getPrivateKeyAsHex();
+//        System.out.println(dk.getPrivateKeyAsHex());
     }
 
     public String getPrivateKey() {
