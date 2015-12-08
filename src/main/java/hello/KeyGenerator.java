@@ -20,17 +20,15 @@ public class KeyGenerator {
         } catch (NoSuchAlgorithmException e) {
             new RuntimeException(e);
         }
-        this.masterKey = new BigInteger(masterKey,16).toByteArray();
+        this.masterKey = new BigInteger(masterKey, 16).toByteArray();
         this.chainCode = md.digest(chainCode.getBytes());
-        
         generatePrivateKey();
     }
 
-    private void generatePrivateKey(){
-        DeterministicKey dk = HDKeyDerivation.createMasterPrivKeyFromBytes(masterKey,chainCode);
-        dk = HDKeyDerivation.deriveChildKey(dk,0);
+    private void generatePrivateKey() {
+        DeterministicKey dk = HDKeyDerivation.createMasterPrivKeyFromBytes(masterKey, chainCode);
+        dk = HDKeyDerivation.deriveChildKey(dk, CHILD_NUMBER);
         privateKey = dk.getPrivateKeyAsHex();
-//        System.out.println(dk.getPrivateKeyAsHex());
     }
 
     public String getPrivateKey() {

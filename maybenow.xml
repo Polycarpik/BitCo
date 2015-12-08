@@ -1,0 +1,1498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="maybenow" default="all">
+  
+  
+  <property file="maybenow.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.tox/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.ear"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.swc"/>
+    <include name="*.ane"/>
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="jre/lib/ext/access-bridge-64.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunmscapi.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.maven:_aopalliance:aopalliance:1.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_cglib:cglib-nodep:2.2.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/cglib/cglib-nodep/2.2.2/cglib-nodep-2.2.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_ch.qos.logback:logback-classic:1.1.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/ch/qos/logback/logback-classic/1.1.3/logback-classic-1.1.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_ch.qos.logback:logback-core:1.1.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/ch/qos/logback/logback-core/1.1.3/logback-core-1.1.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.5.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-annotations/2.5.0/jackson-annotations-2.5.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.6.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-annotations/2.6.3/jackson-annotations-2.6.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml.jackson.core:jackson-core:2.5.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-core/2.5.1/jackson-core-2.5.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml.jackson.core:jackson-core:2.6.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-core/2.6.3/jackson-core-2.6.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.5.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-databind/2.5.2/jackson-databind-2.5.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.6.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-databind/2.6.3/jackson-databind-2.6.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml:classmate:1.1.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/classmate/1.1.0/classmate-1.1.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.code.findbugs:jsr305:2.0.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/code/findbugs/jsr305/2.0.1/jsr305-2.0.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.guava:guava:18.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/guava/guava/18.0/guava-18.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.protobuf:protobuf-java:2.5.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/protobuf/protobuf-java/2.5.0/protobuf-java-2.5.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.zxing:core:2.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/zxing/core/2.0/core-2.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.zxing:javase:2.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/zxing/javase/2.0/javase-2.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.h2database:h2:1.3.167.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/h2database/h2/1.3.167/h2-1.3.167.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.lambdaworks:scrypt:1.4.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/lambdaworks/scrypt/1.4.0/scrypt-1.4.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.madgag.spongycastle:core:1.51.0.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/madgag/spongycastle/core/1.51.0.0/core-1.51.0.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.squareup.okhttp:okhttp:2.4.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/squareup/okhttp/okhttp/2.4.0/okhttp-2.4.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.squareup.okio:okio:1.4.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/squareup/okio/okio/1.4.0/okio-1.4.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_de.jensd:fontawesomefx:8.0.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/de/jensd/fontawesomefx/8.0.0/fontawesomefx-8.0.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.validation:validation-api:1.1.0.final.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_junit:junit:4.12.classpath">
+    <pathelement location="${path.variable.maven_repository}/junit/junit/4.12/junit-4.12.jar"/>
+  </path>
+  
+  <path id="library.maven:_log4j:log4j:1.2.17.classpath">
+    <pathelement location="${path.variable.maven_repository}/log4j/log4j/1.2.17/log4j-1.2.17.jar"/>
+  </path>
+  
+  <path id="library.maven:_mysql:mysql-connector-java:5.1.33.classpath">
+    <pathelement location="${path.variable.maven_repository}/mysql/mysql-connector-java/5.1.33/mysql-connector-java-5.1.33.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.glxn:qrgen:1.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/glxn/qrgen/1.3/qrgen-1.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.jcip:jcip-annotations:1.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/jcip/jcip-annotations/1.0/jcip-annotations-1.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.sf.jopt-simple:jopt-simple:4.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/sf/jopt-simple/jopt-simple/4.3/jopt-simple-4.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.tomcat.embed:tomcat-embed-core:8.0.28.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-core/8.0.28/tomcat-embed-core-8.0.28.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.tomcat.embed:tomcat-embed-el:8.0.28.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-el/8.0.28/tomcat-embed-el-8.0.28.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.tomcat.embed:tomcat-embed-logging-juli:8.0.28.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-logging-juli/8.0.28/tomcat-embed-logging-juli-8.0.28.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.tomcat.embed:tomcat-embed-websocket:8.0.28.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-websocket/8.0.28/tomcat-embed-websocket-8.0.28.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.bitcoinj:orchid:1.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/bitcoinj/orchid/1.2/orchid-1.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.easymock:easymock:3.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/easymock/easymock/3.2/easymock-3.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.fusesource.leveldbjni:leveldbjni-all:1.8.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/fusesource/leveldbjni/leveldbjni-all/1.8/leveldbjni-all-1.8.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.fxmisc.easybind:easybind:1.0.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/fxmisc/easybind/easybind/1.0.2/easybind-1.0.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hamcrest:hamcrest-library:1.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-library/1.3/hamcrest-library-1.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hibernate:hibernate-validator:5.2.2.final.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-validator/5.2.2.Final/hibernate-validator-5.2.2.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.jboss.logging:jboss-logging:3.3.0.final.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/jboss/logging/jboss-logging/3.3.0.Final/jboss-logging-3.3.0.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.mockito:mockito-core:1.10.19.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/mockito/mockito-core/1.10.19/mockito-core-1.10.19.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.objenesis:objenesis:1.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/objenesis/objenesis/1.3/objenesis-1.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.objenesis:objenesis:2.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/objenesis/objenesis/2.1/objenesis-2.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.slf4j:jcl-over-slf4j:1.7.13.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/slf4j/jcl-over-slf4j/1.7.13/jcl-over-slf4j-1.7.13.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.slf4j:jul-to-slf4j:1.7.13.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/slf4j/jul-to-slf4j/1.7.13/jul-to-slf4j-1.7.13.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.slf4j:log4j-over-slf4j:1.7.13.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/slf4j/log4j-over-slf4j/1.7.13/log4j-over-slf4j-1.7.13.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.slf4j:slf4j-api:1.7.5.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.slf4j:slf4j-jdk14:1.7.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/slf4j/slf4j-jdk14/1.7.7/slf4j-jdk14-1.7.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/slf4j/slf4j-log4j12/1.7.5/slf4j-log4j12-1.7.5.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-autoconfigure:1.3.0.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-autoconfigure/1.3.0.RELEASE/spring-boot-autoconfigure-1.3.0.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-starter-logging:1.3.0.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-logging/1.3.0.RELEASE/spring-boot-starter-logging-1.3.0.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-starter-test:1.3.0.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-test/1.3.0.RELEASE/spring-boot-starter-test-1.3.0.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-starter-tomcat:1.3.0.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-tomcat/1.3.0.RELEASE/spring-boot-starter-tomcat-1.3.0.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-starter-validation:1.3.0.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-validation/1.3.0.RELEASE/spring-boot-starter-validation-1.3.0.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-starter-web:1.3.0.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-web/1.3.0.RELEASE/spring-boot-starter-web-1.3.0.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-starter:1.3.0.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter/1.3.0.RELEASE/spring-boot-starter-1.3.0.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot:1.3.0.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot/1.3.0.RELEASE/spring-boot-1.3.0.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-aop:4.2.3.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-aop/4.2.3.RELEASE/spring-aop-4.2.3.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-beans:4.2.3.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-beans/4.2.3.RELEASE/spring-beans-4.2.3.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-context:4.2.3.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-context/4.2.3.RELEASE/spring-context-4.2.3.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-core:4.2.3.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-core/4.2.3.RELEASE/spring-core-4.2.3.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-expression:4.2.3.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-expression/4.2.3.RELEASE/spring-expression-4.2.3.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-test:4.2.3.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-test/4.2.3.RELEASE/spring-test-4.2.3.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-web:4.2.3.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-web/4.2.3.RELEASE/spring-web-4.2.3.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-webmvc:4.2.3.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-webmvc/4.2.3.RELEASE/spring-webmvc-4.2.3.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.yaml:snakeyaml:1.16.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/yaml/snakeyaml/1.16/snakeyaml-1.16.jar"/>
+  </path>
+  
+  <path id="library.maven:_postgresql:postgresql:9.1-901.jdbc4.classpath">
+    <pathelement location="${path.variable.maven_repository}/postgresql/postgresql/9.1-901.jdbc4/postgresql-9.1-901.jdbc4.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module bitcoinj-core -->
+  
+  <dirname property="module.bitcoinj-core.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.bitcoinj-core" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.bitcoinj-core" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.bitcoinj-core" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.bitcoinj-core" value="-encoding UTF-8 -source 1.6 -target 1.6 ${compiler.args}"/>
+  
+  <property name="bitcoinj-core.output.dir" value="${module.bitcoinj-core.basedir}/../../Downloads/bitcoinj/bitcoinj-master/core/target/classes"/>
+  <property name="bitcoinj-core.testoutput.dir" value="${module.bitcoinj-core.basedir}/../../Downloads/bitcoinj/bitcoinj-master/core/target/test-classes"/>
+  
+  <path id="bitcoinj-core.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="bitcoinj-core.module.production.classpath">
+    <path refid="${module.jdk.classpath.bitcoinj-core}"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.h2database:h2:1.3.167.classpath"/>
+    <path refid="library.maven:_com.madgag.spongycastle:core:1.51.0.0.classpath"/>
+    <path refid="library.maven:_com.google.protobuf:protobuf-java:2.5.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:18.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:2.0.1.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_com.lambdaworks:scrypt:1.4.0.classpath"/>
+    <path refid="library.maven:_postgresql:postgresql:9.1-901.jdbc4.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.33.classpath"/>
+    <path refid="library.maven:_org.fusesource.leveldbjni:leveldbjni-all:1.8.classpath"/>
+    <path refid="library.maven:_org.bitcoinj:orchid:1.2.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp:okhttp:2.4.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.4.0.classpath"/>
+  </path>
+  
+  <path id="bitcoinj-core.runtime.production.module.classpath">
+    <pathelement location="${bitcoinj-core.output.dir}"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.h2database:h2:1.3.167.classpath"/>
+    <path refid="library.maven:_com.madgag.spongycastle:core:1.51.0.0.classpath"/>
+    <path refid="library.maven:_com.google.protobuf:protobuf-java:2.5.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:18.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:2.0.1.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_com.lambdaworks:scrypt:1.4.0.classpath"/>
+    <path refid="library.maven:_postgresql:postgresql:9.1-901.jdbc4.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.33.classpath"/>
+    <path refid="library.maven:_org.fusesource.leveldbjni:leveldbjni-all:1.8.classpath"/>
+    <path refid="library.maven:_org.bitcoinj:orchid:1.2.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp:okhttp:2.4.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.4.0.classpath"/>
+  </path>
+  
+  <path id="bitcoinj-core.module.classpath">
+    <path refid="${module.jdk.classpath.bitcoinj-core}"/>
+    <pathelement location="${bitcoinj-core.output.dir}"/>
+    <path refid="library.maven:_junit:junit:4.12.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.easymock:easymock:3.2.classpath"/>
+    <path refid="library.maven:_cglib:cglib-nodep:2.2.2.classpath"/>
+    <path refid="library.maven:_org.objenesis:objenesis:1.3.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-jdk14:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.5.2.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.5.0.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.5.1.classpath"/>
+    <path refid="library.maven:_com.h2database:h2:1.3.167.classpath"/>
+    <path refid="library.maven:_com.madgag.spongycastle:core:1.51.0.0.classpath"/>
+    <path refid="library.maven:_com.google.protobuf:protobuf-java:2.5.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:18.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:2.0.1.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_com.lambdaworks:scrypt:1.4.0.classpath"/>
+    <path refid="library.maven:_postgresql:postgresql:9.1-901.jdbc4.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.33.classpath"/>
+    <path refid="library.maven:_org.fusesource.leveldbjni:leveldbjni-all:1.8.classpath"/>
+    <path refid="library.maven:_org.bitcoinj:orchid:1.2.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp:okhttp:2.4.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.4.0.classpath"/>
+  </path>
+  
+  <path id="bitcoinj-core.runtime.module.classpath">
+    <pathelement location="${bitcoinj-core.testoutput.dir}"/>
+    <pathelement location="${bitcoinj-core.output.dir}"/>
+    <path refid="library.maven:_junit:junit:4.12.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.easymock:easymock:3.2.classpath"/>
+    <path refid="library.maven:_cglib:cglib-nodep:2.2.2.classpath"/>
+    <path refid="library.maven:_org.objenesis:objenesis:1.3.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-jdk14:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.5.2.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.5.0.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.5.1.classpath"/>
+    <path refid="library.maven:_com.h2database:h2:1.3.167.classpath"/>
+    <path refid="library.maven:_com.madgag.spongycastle:core:1.51.0.0.classpath"/>
+    <path refid="library.maven:_com.google.protobuf:protobuf-java:2.5.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:18.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:2.0.1.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_com.lambdaworks:scrypt:1.4.0.classpath"/>
+    <path refid="library.maven:_postgresql:postgresql:9.1-901.jdbc4.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.33.classpath"/>
+    <path refid="library.maven:_org.fusesource.leveldbjni:leveldbjni-all:1.8.classpath"/>
+    <path refid="library.maven:_org.bitcoinj:orchid:1.2.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp:okhttp:2.4.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.4.0.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.bitcoinj-core">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.bitcoinj-core">
+    <patternset refid="excluded.from.module.bitcoinj-core"/>
+  </patternset>
+  
+  <path id="bitcoinj-core.module.sourcepath">
+    <dirset dir="${module.bitcoinj-core.basedir}/../../Downloads/bitcoinj/bitcoinj-master/core">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="bitcoinj-core.module.test.sourcepath">
+    <dirset dir="${module.bitcoinj-core.basedir}/../../Downloads/bitcoinj/bitcoinj-master/core">
+      <include name="src/test/java"/>
+      <include name="src/test/resources"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.bitcoinj-core" depends="compile.module.bitcoinj-core.production,compile.module.bitcoinj-core.tests" description="Compile module bitcoinj-core"/>
+  
+  <target name="compile.module.bitcoinj-core.production" depends="register.custom.compilers" description="Compile module bitcoinj-core; production classes">
+    <mkdir dir="${bitcoinj-core.output.dir}"/>
+    <javac2 destdir="${bitcoinj-core.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.bitcoinj-core}/javac">
+      <compilerarg line="${compiler.args.bitcoinj-core}"/>
+      <bootclasspath refid="bitcoinj-core.module.bootclasspath"/>
+      <classpath refid="bitcoinj-core.module.production.classpath"/>
+      <src refid="bitcoinj-core.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.bitcoinj-core"/>
+    </javac2>
+    
+    <copy todir="${bitcoinj-core.output.dir}">
+      <fileset dir="${module.bitcoinj-core.basedir}/../../Downloads/bitcoinj/bitcoinj-master/core/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.bitcoinj-core.basedir}/../../Downloads/bitcoinj/bitcoinj-master/core/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.bitcoinj-core.tests" depends="register.custom.compilers,compile.module.bitcoinj-core.production" description="compile module bitcoinj-core; test classes" unless="skip.tests">
+    <mkdir dir="${bitcoinj-core.testoutput.dir}"/>
+    <javac2 destdir="${bitcoinj-core.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.bitcoinj-core}/javac">
+      <compilerarg line="${compiler.args.bitcoinj-core}"/>
+      <bootclasspath refid="bitcoinj-core.module.bootclasspath"/>
+      <classpath refid="bitcoinj-core.module.classpath"/>
+      <src refid="bitcoinj-core.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.bitcoinj-core"/>
+    </javac2>
+    
+    <copy todir="${bitcoinj-core.testoutput.dir}">
+      <fileset dir="${module.bitcoinj-core.basedir}/../../Downloads/bitcoinj/bitcoinj-master/core/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.bitcoinj-core.basedir}/../../Downloads/bitcoinj/bitcoinj-master/core/src/test/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.bitcoinj-core" description="cleanup module">
+    <delete dir="${bitcoinj-core.output.dir}"/>
+    <delete dir="${bitcoinj-core.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module bitcoinj-parent -->
+  
+  <dirname property="module.bitcoinj-parent.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.bitcoinj-parent" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.bitcoinj-parent" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.bitcoinj-parent" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.bitcoinj-parent" value="-encoding windows-1251 -source 8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="bitcoinj-parent.output.dir" value="${module.bitcoinj-parent.basedir}/../../Downloads/bitcoinj/bitcoinj-master/target/classes"/>
+  <property name="bitcoinj-parent.testoutput.dir" value="${module.bitcoinj-parent.basedir}/../../Downloads/bitcoinj/bitcoinj-master/target/test-classes"/>
+  
+  <path id="bitcoinj-parent.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="bitcoinj-parent.module.production.classpath">
+    <path refid="${module.jdk.classpath.bitcoinj-parent}"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+  </path>
+  
+  <path id="bitcoinj-parent.runtime.production.module.classpath">
+    <pathelement location="${bitcoinj-parent.output.dir}"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-jdk14:1.7.7.classpath"/>
+  </path>
+  
+  <path id="bitcoinj-parent.module.classpath">
+    <path refid="${module.jdk.classpath.bitcoinj-parent}"/>
+    <pathelement location="${bitcoinj-parent.output.dir}"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-jdk14:1.7.7.classpath"/>
+  </path>
+  
+  <path id="bitcoinj-parent.runtime.module.classpath">
+    <pathelement location="${bitcoinj-parent.testoutput.dir}"/>
+    <pathelement location="${bitcoinj-parent.output.dir}"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-jdk14:1.7.7.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.bitcoinj-parent">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.bitcoinj-parent">
+    <patternset refid="excluded.from.module.bitcoinj-parent"/>
+  </patternset>
+  
+  
+  <target name="compile.module.bitcoinj-parent" depends="compile.module.bitcoinj-parent.production,compile.module.bitcoinj-parent.tests" description="Compile module bitcoinj-parent"/>
+  
+  <target name="compile.module.bitcoinj-parent.production" depends="register.custom.compilers" description="Compile module bitcoinj-parent; production classes"/>
+  
+  <target name="compile.module.bitcoinj-parent.tests" depends="register.custom.compilers,compile.module.bitcoinj-parent.production" description="compile module bitcoinj-parent; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.bitcoinj-parent" description="cleanup module">
+    <delete dir="${bitcoinj-parent.output.dir}"/>
+    <delete dir="${bitcoinj-parent.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module bitcoinj-examples -->
+  
+  <dirname property="module.bitcoinj-examples.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.bitcoinj-examples" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.bitcoinj-examples" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.bitcoinj-examples" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.bitcoinj-examples" value="-encoding UTF-8 -source 8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="bitcoinj-examples.output.dir" value="${module.bitcoinj-examples.basedir}/../../Downloads/bitcoinj/bitcoinj-master/examples/target/classes"/>
+  <property name="bitcoinj-examples.testoutput.dir" value="${module.bitcoinj-examples.basedir}/../../Downloads/bitcoinj/bitcoinj-master/examples/target/test-classes"/>
+  
+  <path id="bitcoinj-examples.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="bitcoinj-examples.module.production.classpath">
+    <path refid="${module.jdk.classpath.bitcoinj-examples}"/>
+    <pathelement location="${bitcoinj-core.output.dir}"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.madgag.spongycastle:core:1.51.0.0.classpath"/>
+    <path refid="library.maven:_com.google.protobuf:protobuf-java:2.5.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:18.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:2.0.1.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_com.lambdaworks:scrypt:1.4.0.classpath"/>
+    <path refid="library.maven:_org.bitcoinj:orchid:1.2.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp:okhttp:2.4.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.4.0.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-jdk14:1.7.7.classpath"/>
+    <path refid="library.maven:_com.h2database:h2:1.3.167.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+  </path>
+  
+  <path id="bitcoinj-examples.runtime.production.module.classpath">
+    <pathelement location="${bitcoinj-examples.output.dir}"/>
+    <path refid="bitcoinj-core.runtime.production.module.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.madgag.spongycastle:core:1.51.0.0.classpath"/>
+    <path refid="library.maven:_com.google.protobuf:protobuf-java:2.5.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:18.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:2.0.1.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_com.lambdaworks:scrypt:1.4.0.classpath"/>
+    <path refid="library.maven:_org.bitcoinj:orchid:1.2.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp:okhttp:2.4.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.4.0.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-jdk14:1.7.7.classpath"/>
+    <path refid="library.maven:_com.h2database:h2:1.3.167.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+  </path>
+  
+  <path id="bitcoinj-examples.module.classpath">
+    <path refid="${module.jdk.classpath.bitcoinj-examples}"/>
+    <pathelement location="${bitcoinj-examples.output.dir}"/>
+    <pathelement location="${bitcoinj-core.testoutput.dir}"/>
+    <pathelement location="${bitcoinj-core.output.dir}"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.madgag.spongycastle:core:1.51.0.0.classpath"/>
+    <path refid="library.maven:_com.google.protobuf:protobuf-java:2.5.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:18.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:2.0.1.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_com.lambdaworks:scrypt:1.4.0.classpath"/>
+    <path refid="library.maven:_org.bitcoinj:orchid:1.2.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp:okhttp:2.4.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.4.0.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-jdk14:1.7.7.classpath"/>
+    <path refid="library.maven:_com.h2database:h2:1.3.167.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+  </path>
+  
+  <path id="bitcoinj-examples.runtime.module.classpath">
+    <pathelement location="${bitcoinj-examples.testoutput.dir}"/>
+    <pathelement location="${bitcoinj-examples.output.dir}"/>
+    <path refid="bitcoinj-core.runtime.module.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.madgag.spongycastle:core:1.51.0.0.classpath"/>
+    <path refid="library.maven:_com.google.protobuf:protobuf-java:2.5.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:18.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:2.0.1.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_com.lambdaworks:scrypt:1.4.0.classpath"/>
+    <path refid="library.maven:_org.bitcoinj:orchid:1.2.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp:okhttp:2.4.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.4.0.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-jdk14:1.7.7.classpath"/>
+    <path refid="library.maven:_com.h2database:h2:1.3.167.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.bitcoinj-examples">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.bitcoinj-examples">
+    <patternset refid="excluded.from.module.bitcoinj-examples"/>
+  </patternset>
+  
+  <path id="bitcoinj-examples.module.sourcepath">
+    <dirset dir="${module.bitcoinj-examples.basedir}/../../Downloads/bitcoinj/bitcoinj-master/examples">
+      <include name="src/main/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.bitcoinj-examples" depends="compile.module.bitcoinj-examples.production,compile.module.bitcoinj-examples.tests" description="Compile module bitcoinj-examples"/>
+  
+  <target name="compile.module.bitcoinj-examples.production" depends="register.custom.compilers,compile.module.bitcoinj-core" description="Compile module bitcoinj-examples; production classes">
+    <mkdir dir="${bitcoinj-examples.output.dir}"/>
+    <javac2 destdir="${bitcoinj-examples.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.bitcoinj-examples}/javac">
+      <compilerarg line="${compiler.args.bitcoinj-examples}"/>
+      <bootclasspath refid="bitcoinj-examples.module.bootclasspath"/>
+      <classpath refid="bitcoinj-examples.module.production.classpath"/>
+      <src refid="bitcoinj-examples.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.bitcoinj-examples"/>
+    </javac2>
+    
+    <copy todir="${bitcoinj-examples.output.dir}">
+      <fileset dir="${module.bitcoinj-examples.basedir}/../../Downloads/bitcoinj/bitcoinj-master/examples/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.bitcoinj-examples.tests" depends="register.custom.compilers,compile.module.bitcoinj-examples.production" description="compile module bitcoinj-examples; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.bitcoinj-examples" description="cleanup module">
+    <delete dir="${bitcoinj-examples.output.dir}"/>
+    <delete dir="${bitcoinj-examples.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module bitcoinj-tools -->
+  
+  <dirname property="module.bitcoinj-tools.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.bitcoinj-tools" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.bitcoinj-tools" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.bitcoinj-tools" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.bitcoinj-tools" value="-encoding UTF-8 -source 8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="bitcoinj-tools.output.dir" value="${module.bitcoinj-tools.basedir}/../../Downloads/bitcoinj/bitcoinj-master/tools/target/classes"/>
+  <property name="bitcoinj-tools.testoutput.dir" value="${module.bitcoinj-tools.basedir}/../../Downloads/bitcoinj/bitcoinj-master/tools/target/test-classes"/>
+  
+  <path id="bitcoinj-tools.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="bitcoinj-tools.module.production.classpath">
+    <path refid="${module.jdk.classpath.bitcoinj-tools}"/>
+    <pathelement location="${bitcoinj-core.output.dir}"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.madgag.spongycastle:core:1.51.0.0.classpath"/>
+    <path refid="library.maven:_com.google.protobuf:protobuf-java:2.5.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:18.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:2.0.1.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_com.lambdaworks:scrypt:1.4.0.classpath"/>
+    <path refid="library.maven:_org.bitcoinj:orchid:1.2.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp:okhttp:2.4.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.4.0.classpath"/>
+    <path refid="library.maven:_net.sf.jopt-simple:jopt-simple:4.3.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-jdk14:1.7.7.classpath"/>
+    <path refid="library.maven:_com.h2database:h2:1.3.167.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+  </path>
+  
+  <path id="bitcoinj-tools.runtime.production.module.classpath">
+    <pathelement location="${bitcoinj-tools.output.dir}"/>
+    <path refid="bitcoinj-core.runtime.production.module.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.madgag.spongycastle:core:1.51.0.0.classpath"/>
+    <path refid="library.maven:_com.google.protobuf:protobuf-java:2.5.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:18.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:2.0.1.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_com.lambdaworks:scrypt:1.4.0.classpath"/>
+    <path refid="library.maven:_org.bitcoinj:orchid:1.2.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp:okhttp:2.4.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.4.0.classpath"/>
+    <path refid="library.maven:_net.sf.jopt-simple:jopt-simple:4.3.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-jdk14:1.7.7.classpath"/>
+    <path refid="library.maven:_com.h2database:h2:1.3.167.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+  </path>
+  
+  <path id="bitcoinj-tools.module.classpath">
+    <path refid="${module.jdk.classpath.bitcoinj-tools}"/>
+    <pathelement location="${bitcoinj-tools.output.dir}"/>
+    <pathelement location="${bitcoinj-core.testoutput.dir}"/>
+    <pathelement location="${bitcoinj-core.output.dir}"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.madgag.spongycastle:core:1.51.0.0.classpath"/>
+    <path refid="library.maven:_com.google.protobuf:protobuf-java:2.5.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:18.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:2.0.1.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_com.lambdaworks:scrypt:1.4.0.classpath"/>
+    <path refid="library.maven:_org.bitcoinj:orchid:1.2.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp:okhttp:2.4.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.4.0.classpath"/>
+    <path refid="library.maven:_net.sf.jopt-simple:jopt-simple:4.3.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-jdk14:1.7.7.classpath"/>
+    <path refid="library.maven:_com.h2database:h2:1.3.167.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+  </path>
+  
+  <path id="bitcoinj-tools.runtime.module.classpath">
+    <pathelement location="${bitcoinj-tools.testoutput.dir}"/>
+    <pathelement location="${bitcoinj-tools.output.dir}"/>
+    <path refid="bitcoinj-core.runtime.module.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.madgag.spongycastle:core:1.51.0.0.classpath"/>
+    <path refid="library.maven:_com.google.protobuf:protobuf-java:2.5.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:18.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:2.0.1.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_com.lambdaworks:scrypt:1.4.0.classpath"/>
+    <path refid="library.maven:_org.bitcoinj:orchid:1.2.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp:okhttp:2.4.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.4.0.classpath"/>
+    <path refid="library.maven:_net.sf.jopt-simple:jopt-simple:4.3.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-jdk14:1.7.7.classpath"/>
+    <path refid="library.maven:_com.h2database:h2:1.3.167.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.bitcoinj-tools">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.bitcoinj-tools">
+    <patternset refid="excluded.from.module.bitcoinj-tools"/>
+  </patternset>
+  
+  <path id="bitcoinj-tools.module.sourcepath">
+    <dirset dir="${module.bitcoinj-tools.basedir}/../../Downloads/bitcoinj/bitcoinj-master/tools">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.bitcoinj-tools" depends="compile.module.bitcoinj-tools.production,compile.module.bitcoinj-tools.tests" description="Compile module bitcoinj-tools"/>
+  
+  <target name="compile.module.bitcoinj-tools.production" depends="register.custom.compilers,compile.module.bitcoinj-core" description="Compile module bitcoinj-tools; production classes">
+    <mkdir dir="${bitcoinj-tools.output.dir}"/>
+    <javac2 destdir="${bitcoinj-tools.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.bitcoinj-tools}/javac">
+      <compilerarg line="${compiler.args.bitcoinj-tools}"/>
+      <bootclasspath refid="bitcoinj-tools.module.bootclasspath"/>
+      <classpath refid="bitcoinj-tools.module.production.classpath"/>
+      <src refid="bitcoinj-tools.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.bitcoinj-tools"/>
+    </javac2>
+    
+    <copy todir="${bitcoinj-tools.output.dir}">
+      <fileset dir="${module.bitcoinj-tools.basedir}/../../Downloads/bitcoinj/bitcoinj-master/tools/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.bitcoinj-tools.basedir}/../../Downloads/bitcoinj/bitcoinj-master/tools/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.bitcoinj-tools.tests" depends="register.custom.compilers,compile.module.bitcoinj-tools.production" description="compile module bitcoinj-tools; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.bitcoinj-tools" description="cleanup module">
+    <delete dir="${bitcoinj-tools.output.dir}"/>
+    <delete dir="${bitcoinj-tools.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module MaybeNow -->
+  
+  <dirname property="module.maybenow.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.maybenow" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.maybenow" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.maybenow" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.maybenow" value="-encoding UTF-8 -source 8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="maybenow.output.dir" value="${module.maybenow.basedir}/target/classes"/>
+  <property name="maybenow.testoutput.dir" value="${module.maybenow.basedir}/target/test-classes"/>
+  
+  <path id="maybenow.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="maybenow.module.production.classpath">
+    <path refid="${module.jdk.classpath.maybenow}"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-web:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-autoconfigure:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-logging:1.3.0.release.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-classic:1.1.3.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-core:1.1.3.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.13.classpath"/>
+    <path refid="library.maven:_org.slf4j:jul-to-slf4j:1.7.13.classpath"/>
+    <path refid="library.maven:_org.slf4j:log4j-over-slf4j:1.7.13.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-tomcat:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-core:8.0.28.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-el:8.0.28.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-logging-juli:8.0.28.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-websocket:8.0.28.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-validation:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-validator:5.2.2.final.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.1.0.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.3.0.final.classpath"/>
+    <path refid="library.maven:_com.fasterxml:classmate:1.1.0.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.6.3.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.6.3.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.6.3.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:4.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.2.3.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:4.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.2.3.release.classpath"/>
+    <pathelement location="${bitcoinj-core.output.dir}"/>
+    <path refid="library.maven:_com.madgag.spongycastle:core:1.51.0.0.classpath"/>
+    <path refid="library.maven:_com.google.protobuf:protobuf-java:2.5.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:18.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:2.0.1.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_com.lambdaworks:scrypt:1.4.0.classpath"/>
+    <path refid="library.maven:_org.bitcoinj:orchid:1.2.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp:okhttp:2.4.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.4.0.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+  </path>
+  
+  <path id="maybenow.runtime.production.module.classpath">
+    <pathelement location="${maybenow.output.dir}"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-web:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-autoconfigure:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-logging:1.3.0.release.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-classic:1.1.3.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-core:1.1.3.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.13.classpath"/>
+    <path refid="library.maven:_org.slf4j:jul-to-slf4j:1.7.13.classpath"/>
+    <path refid="library.maven:_org.slf4j:log4j-over-slf4j:1.7.13.classpath"/>
+    <path refid="library.maven:_org.yaml:snakeyaml:1.16.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-tomcat:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-core:8.0.28.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-el:8.0.28.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-logging-juli:8.0.28.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-websocket:8.0.28.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-validation:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-validator:5.2.2.final.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.1.0.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.3.0.final.classpath"/>
+    <path refid="library.maven:_com.fasterxml:classmate:1.1.0.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.6.3.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.6.3.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.6.3.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:4.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.2.3.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:4.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.2.3.release.classpath"/>
+    <path refid="bitcoinj-core.runtime.production.module.classpath"/>
+    <path refid="library.maven:_com.madgag.spongycastle:core:1.51.0.0.classpath"/>
+    <path refid="library.maven:_com.google.protobuf:protobuf-java:2.5.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:18.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:2.0.1.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_com.lambdaworks:scrypt:1.4.0.classpath"/>
+    <path refid="library.maven:_org.bitcoinj:orchid:1.2.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp:okhttp:2.4.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.4.0.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+  </path>
+  
+  <path id="maybenow.module.classpath">
+    <path refid="${module.jdk.classpath.maybenow}"/>
+    <pathelement location="${maybenow.output.dir}"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-web:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-autoconfigure:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-logging:1.3.0.release.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-classic:1.1.3.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-core:1.1.3.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.13.classpath"/>
+    <path refid="library.maven:_org.slf4j:jul-to-slf4j:1.7.13.classpath"/>
+    <path refid="library.maven:_org.slf4j:log4j-over-slf4j:1.7.13.classpath"/>
+    <path refid="library.maven:_org.yaml:snakeyaml:1.16.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-tomcat:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-core:8.0.28.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-el:8.0.28.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-logging-juli:8.0.28.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-websocket:8.0.28.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-validation:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-validator:5.2.2.final.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.1.0.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.3.0.final.classpath"/>
+    <path refid="library.maven:_com.fasterxml:classmate:1.1.0.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.6.3.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.6.3.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.6.3.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:4.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.2.3.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:4.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-test:1.3.0.release.classpath"/>
+    <path refid="library.maven:_junit:junit:4.12.classpath"/>
+    <path refid="library.maven:_org.mockito:mockito-core:1.10.19.classpath"/>
+    <path refid="library.maven:_org.objenesis:objenesis:2.1.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-library:1.3.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:4.2.3.release.classpath"/>
+    <pathelement location="${bitcoinj-core.testoutput.dir}"/>
+    <pathelement location="${bitcoinj-core.output.dir}"/>
+    <path refid="library.maven:_com.madgag.spongycastle:core:1.51.0.0.classpath"/>
+    <path refid="library.maven:_com.google.protobuf:protobuf-java:2.5.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:18.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:2.0.1.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_com.lambdaworks:scrypt:1.4.0.classpath"/>
+    <path refid="library.maven:_org.bitcoinj:orchid:1.2.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp:okhttp:2.4.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.4.0.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-jdk14:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+  </path>
+  
+  <path id="maybenow.runtime.module.classpath">
+    <pathelement location="${maybenow.testoutput.dir}"/>
+    <pathelement location="${maybenow.output.dir}"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-web:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-autoconfigure:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-logging:1.3.0.release.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-classic:1.1.3.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-core:1.1.3.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.13.classpath"/>
+    <path refid="library.maven:_org.slf4j:jul-to-slf4j:1.7.13.classpath"/>
+    <path refid="library.maven:_org.slf4j:log4j-over-slf4j:1.7.13.classpath"/>
+    <path refid="library.maven:_org.yaml:snakeyaml:1.16.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-tomcat:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-core:8.0.28.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-el:8.0.28.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-logging-juli:8.0.28.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-websocket:8.0.28.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-validation:1.3.0.release.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-validator:5.2.2.final.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.1.0.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.3.0.final.classpath"/>
+    <path refid="library.maven:_com.fasterxml:classmate:1.1.0.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.6.3.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.6.3.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.6.3.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:4.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.2.3.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:4.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-test:1.3.0.release.classpath"/>
+    <path refid="library.maven:_junit:junit:4.12.classpath"/>
+    <path refid="library.maven:_org.mockito:mockito-core:1.10.19.classpath"/>
+    <path refid="library.maven:_org.objenesis:objenesis:2.1.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-library:1.3.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.2.3.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:4.2.3.release.classpath"/>
+    <path refid="bitcoinj-core.runtime.module.classpath"/>
+    <path refid="library.maven:_com.madgag.spongycastle:core:1.51.0.0.classpath"/>
+    <path refid="library.maven:_com.google.protobuf:protobuf-java:2.5.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:18.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:2.0.1.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_com.lambdaworks:scrypt:1.4.0.classpath"/>
+    <path refid="library.maven:_org.bitcoinj:orchid:1.2.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp:okhttp:2.4.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.4.0.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-jdk14:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.5.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.maybenow">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.maybenow">
+    <patternset refid="excluded.from.module.maybenow"/>
+  </patternset>
+  
+  <path id="maybenow.module.sourcepath">
+    <dirset dir="${module.maybenow.basedir}">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="maybenow.module.test.sourcepath">
+    <dirset dir="${module.maybenow.basedir}">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.maybenow" depends="compile.module.maybenow.production,compile.module.maybenow.tests" description="Compile module MaybeNow"/>
+  
+  <target name="compile.module.maybenow.production" depends="register.custom.compilers,compile.module.bitcoinj-core" description="Compile module MaybeNow; production classes">
+    <mkdir dir="${maybenow.output.dir}"/>
+    <javac2 destdir="${maybenow.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.maybenow}/javac">
+      <compilerarg line="${compiler.args.maybenow}"/>
+      <bootclasspath refid="maybenow.module.bootclasspath"/>
+      <classpath refid="maybenow.module.production.classpath"/>
+      <src refid="maybenow.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.maybenow"/>
+    </javac2>
+    
+    <copy todir="${maybenow.output.dir}">
+      <fileset dir="${module.maybenow.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.maybenow.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.maybenow.tests" depends="register.custom.compilers,compile.module.maybenow.production" description="compile module MaybeNow; test classes" unless="skip.tests">
+    <mkdir dir="${maybenow.testoutput.dir}"/>
+    <javac2 destdir="${maybenow.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.maybenow}/javac">
+      <compilerarg line="${compiler.args.maybenow}"/>
+      <bootclasspath refid="maybenow.module.bootclasspath"/>
+      <classpath refid="maybenow.module.classpath"/>
+      <src refid="maybenow.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.maybenow"/>
+    </javac2>
+    
+    <copy todir="${maybenow.testoutput.dir}">
+      <fileset dir="${module.maybenow.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.maybenow" description="cleanup module">
+    <delete dir="${maybenow.output.dir}"/>
+    <delete dir="${maybenow.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module wallettemplate -->
+  
+  <dirname property="module.wallettemplate.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.wallettemplate" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.wallettemplate" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.wallettemplate" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.wallettemplate" value="-encoding UTF-8 -source 8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="wallettemplate.output.dir" value="${module.wallettemplate.basedir}/../../Downloads/bitcoinj/bitcoinj-master/wallettemplate/target/classes"/>
+  <property name="wallettemplate.testoutput.dir" value="${module.wallettemplate.basedir}/../../Downloads/bitcoinj/bitcoinj-master/wallettemplate/target/test-classes"/>
+  
+  <path id="wallettemplate.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="wallettemplate.module.production.classpath">
+    <path refid="${module.jdk.classpath.wallettemplate}"/>
+    <pathelement location="${bitcoinj-core.output.dir}"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.madgag.spongycastle:core:1.51.0.0.classpath"/>
+    <path refid="library.maven:_com.google.protobuf:protobuf-java:2.5.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:2.0.1.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_com.lambdaworks:scrypt:1.4.0.classpath"/>
+    <path refid="library.maven:_org.bitcoinj:orchid:1.2.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp:okhttp:2.4.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.4.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:18.0.classpath"/>
+    <path refid="library.maven:_org.fxmisc.easybind:easybind:1.0.2.classpath"/>
+    <path refid="library.maven:_de.jensd:fontawesomefx:8.0.0.classpath"/>
+    <path refid="library.maven:_net.glxn:qrgen:1.3.classpath"/>
+    <path refid="library.maven:_com.google.zxing:javase:2.0.classpath"/>
+    <path refid="library.maven:_com.google.zxing:core:2.0.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+  </path>
+  
+  <path id="wallettemplate.runtime.production.module.classpath">
+    <pathelement location="${wallettemplate.output.dir}"/>
+    <path refid="bitcoinj-core.runtime.production.module.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.madgag.spongycastle:core:1.51.0.0.classpath"/>
+    <path refid="library.maven:_com.google.protobuf:protobuf-java:2.5.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:2.0.1.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_com.lambdaworks:scrypt:1.4.0.classpath"/>
+    <path refid="library.maven:_org.bitcoinj:orchid:1.2.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp:okhttp:2.4.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.4.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:18.0.classpath"/>
+    <path refid="library.maven:_org.fxmisc.easybind:easybind:1.0.2.classpath"/>
+    <path refid="library.maven:_de.jensd:fontawesomefx:8.0.0.classpath"/>
+    <path refid="library.maven:_net.glxn:qrgen:1.3.classpath"/>
+    <path refid="library.maven:_com.google.zxing:javase:2.0.classpath"/>
+    <path refid="library.maven:_com.google.zxing:core:2.0.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-jdk14:1.7.7.classpath"/>
+  </path>
+  
+  <path id="wallettemplate.module.classpath">
+    <path refid="${module.jdk.classpath.wallettemplate}"/>
+    <pathelement location="${wallettemplate.output.dir}"/>
+    <pathelement location="${bitcoinj-core.testoutput.dir}"/>
+    <pathelement location="${bitcoinj-core.output.dir}"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.madgag.spongycastle:core:1.51.0.0.classpath"/>
+    <path refid="library.maven:_com.google.protobuf:protobuf-java:2.5.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:2.0.1.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_com.lambdaworks:scrypt:1.4.0.classpath"/>
+    <path refid="library.maven:_org.bitcoinj:orchid:1.2.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp:okhttp:2.4.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.4.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:18.0.classpath"/>
+    <path refid="library.maven:_org.fxmisc.easybind:easybind:1.0.2.classpath"/>
+    <path refid="library.maven:_de.jensd:fontawesomefx:8.0.0.classpath"/>
+    <path refid="library.maven:_net.glxn:qrgen:1.3.classpath"/>
+    <path refid="library.maven:_com.google.zxing:javase:2.0.classpath"/>
+    <path refid="library.maven:_com.google.zxing:core:2.0.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-jdk14:1.7.7.classpath"/>
+  </path>
+  
+  <path id="wallettemplate.runtime.module.classpath">
+    <pathelement location="${wallettemplate.testoutput.dir}"/>
+    <pathelement location="${wallettemplate.output.dir}"/>
+    <path refid="bitcoinj-core.runtime.module.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.5.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_com.madgag.spongycastle:core:1.51.0.0.classpath"/>
+    <path refid="library.maven:_com.google.protobuf:protobuf-java:2.5.0.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:2.0.1.classpath"/>
+    <path refid="library.maven:_net.jcip:jcip-annotations:1.0.classpath"/>
+    <path refid="library.maven:_com.lambdaworks:scrypt:1.4.0.classpath"/>
+    <path refid="library.maven:_org.bitcoinj:orchid:1.2.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp:okhttp:2.4.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.4.0.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:18.0.classpath"/>
+    <path refid="library.maven:_org.fxmisc.easybind:easybind:1.0.2.classpath"/>
+    <path refid="library.maven:_de.jensd:fontawesomefx:8.0.0.classpath"/>
+    <path refid="library.maven:_net.glxn:qrgen:1.3.classpath"/>
+    <path refid="library.maven:_com.google.zxing:javase:2.0.classpath"/>
+    <path refid="library.maven:_com.google.zxing:core:2.0.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.7.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-jdk14:1.7.7.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.wallettemplate">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.wallettemplate">
+    <patternset refid="excluded.from.module.wallettemplate"/>
+  </patternset>
+  
+  <path id="wallettemplate.module.sourcepath">
+    <dirset dir="${module.wallettemplate.basedir}/../../Downloads/bitcoinj/bitcoinj-master/wallettemplate">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.wallettemplate" depends="compile.module.wallettemplate.production,compile.module.wallettemplate.tests" description="Compile module wallettemplate"/>
+  
+  <target name="compile.module.wallettemplate.production" depends="register.custom.compilers,compile.module.bitcoinj-core" description="Compile module wallettemplate; production classes">
+    <mkdir dir="${wallettemplate.output.dir}"/>
+    <javac2 destdir="${wallettemplate.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.wallettemplate}/javac">
+      <compilerarg line="${compiler.args.wallettemplate}"/>
+      <bootclasspath refid="wallettemplate.module.bootclasspath"/>
+      <classpath refid="wallettemplate.module.production.classpath"/>
+      <src refid="wallettemplate.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.wallettemplate"/>
+    </javac2>
+    
+    <copy todir="${wallettemplate.output.dir}">
+      <fileset dir="${module.wallettemplate.basedir}/../../Downloads/bitcoinj/bitcoinj-master/wallettemplate/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.wallettemplate.basedir}/../../Downloads/bitcoinj/bitcoinj-master/wallettemplate/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.wallettemplate.tests" depends="register.custom.compilers,compile.module.wallettemplate.production" description="compile module wallettemplate; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.wallettemplate" description="cleanup module">
+    <delete dir="${wallettemplate.output.dir}"/>
+    <delete dir="${wallettemplate.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.bitcoinj-core, clean.module.bitcoinj-parent, clean.module.bitcoinj-examples, clean.module.bitcoinj-tools, clean.module.maybenow, clean.module.wallettemplate" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.bitcoinj-core, compile.module.bitcoinj-parent, compile.module.bitcoinj-examples, compile.module.bitcoinj-tools, compile.module.maybenow, compile.module.wallettemplate" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.maybenow:jar" value="${basedir}/out/artifacts/MaybeNow_jar"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.MaybeNow.jar" value="${artifacts.temp.dir}/MaybeNow.jar"/>
+  </target>
+  
+  <target name="artifact.maybenow:jar" depends="init.artifacts, compile.module.maybenow, compile.module.bitcoinj-core, compile.module.bitcoinj-examples, compile.module.bitcoinj-tools, compile.module.wallettemplate" description="Build &#39;MaybeNow:jar&#39; artifact">
+    <property name="artifact.temp.output.maybenow:jar" value="${artifacts.temp.dir}/MaybeNow_jar"/>
+    <mkdir dir="${artifact.temp.output.maybenow:jar}"/>
+    <jar destfile="${temp.jar.path.MaybeNow.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset file="${basedir}/out/META-INF/MANIFEST.MF" prefix="META-INF"/>
+      <zipfileset dir="${maybenow.output.dir}"/>
+      <zipfileset dir="${bitcoinj-core.output.dir}"/>
+      <zipfileset dir="${bitcoinj-examples.output.dir}"/>
+      <zipfileset dir="${bitcoinj-tools.output.dir}"/>
+      <zipfileset dir="${wallettemplate.output.dir}"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter/1.3.0.RELEASE/spring-boot-starter-1.3.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/fusesource/leveldbjni/leveldbjni-all/1.8/leveldbjni-all-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/de/jensd/fontawesomefx/8.0.0/fontawesomefx-8.0.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-beans/4.2.3.RELEASE/spring-beans-4.2.3.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/mysql/mysql-connector-java/5.1.33/mysql-connector-java-5.1.33.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/net/jcip/jcip-annotations/1.0/jcip-annotations-1.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/madgag/spongycastle/core/1.51.0.0/core-1.51.0.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/net/sf/jopt-simple/jopt-simple/4.3/jopt-simple-4.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/fxmisc/easybind/easybind/1.0.2/easybind-1.0.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/slf4j/slf4j-log4j12/1.7.5/slf4j-log4j12-1.7.5.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-autoconfigure/1.3.0.RELEASE/spring-boot-autoconfigure-1.3.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-tomcat/1.3.0.RELEASE/spring-boot-starter-tomcat-1.3.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/yaml/snakeyaml/1.16/snakeyaml-1.16.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/slf4j/jcl-over-slf4j/1.7.13/jcl-over-slf4j-1.7.13.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/postgresql/postgresql/9.1-901.jdbc4/postgresql-9.1-901.jdbc4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-databind/2.6.3/jackson-databind-2.6.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/slf4j/log4j-over-slf4j/1.7.13/log4j-over-slf4j-1.7.13.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/classmate/1.1.0/classmate-1.1.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot/1.3.0.RELEASE/spring-boot-1.3.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/ch/qos/logback/logback-classic/1.1.3/logback-classic-1.1.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/slf4j/slf4j-jdk14/1.7.7/slf4j-jdk14-1.7.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-aop/4.2.3.RELEASE/spring-aop-4.2.3.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/slf4j/jul-to-slf4j/1.7.13/jul-to-slf4j-1.7.13.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/h2database/h2/1.3.167/h2-1.3.167.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/net/glxn/qrgen/1.3/qrgen-1.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-validation/1.3.0.RELEASE/spring-boot-starter-validation-1.3.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-expression/4.2.3.RELEASE/spring-expression-4.2.3.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/jboss/logging/jboss-logging/3.3.0.Final/jboss-logging-3.3.0.Final.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-web/4.2.3.RELEASE/spring-web-4.2.3.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/lambdaworks/scrypt/1.4.0/scrypt-1.4.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/google/protobuf/protobuf-java/2.5.0/protobuf-java-2.5.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-el/8.0.28/tomcat-embed-el-8.0.28.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-logging-juli/8.0.28/tomcat-embed-logging-juli-8.0.28.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-core/8.0.28/tomcat-embed-core-8.0.28.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/squareup/okio/okio/1.4.0/okio-1.4.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/log4j/log4j/1.2.17/log4j-1.2.17.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-webmvc/4.2.3.RELEASE/spring-webmvc-4.2.3.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-context/4.2.3.RELEASE/spring-context-4.2.3.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/google/zxing/core/2.0/core-2.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/google/zxing/javase/2.0/javase-2.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-websocket/8.0.28/tomcat-embed-websocket-8.0.28.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/hibernate/hibernate-validator/5.2.2.Final/hibernate-validator-5.2.2.Final.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/squareup/okhttp/okhttp/2.4.0/okhttp-2.4.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/bitcoinj/orchid/1.2/orchid-1.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/google/code/findbugs/jsr305/2.0.1/jsr305-2.0.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-logging/1.3.0.RELEASE/spring-boot-starter-logging-1.3.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/ch/qos/logback/logback-core/1.1.3/logback-core-1.1.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-core/2.6.3/jackson-core-2.6.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-core/4.2.3.RELEASE/spring-core-4.2.3.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-web/1.3.0.RELEASE/spring-boot-starter-web-1.3.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/google/guava/guava/18.0/guava-18.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-annotations/2.6.3/jackson-annotations-2.6.3.jar"/>
+    </jar>
+    <copy file="${temp.jar.path.MaybeNow.jar}" tofile="${artifact.temp.output.maybenow:jar}/MaybeNow.jar"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.maybenow:jar" description="Build all artifacts">
+    <mkdir dir="${artifact.output.maybenow:jar}"/>
+    <copy todir="${artifact.output.maybenow:jar}">
+      <fileset dir="${artifact.temp.output.maybenow:jar}"/>
+    </copy>
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>

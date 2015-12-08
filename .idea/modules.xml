@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MaybeNow.iml" filepath="$PROJECT_DIR$/MaybeNow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bitcoinj-master/core/bitcoinj-core.iml" filepath="$PROJECT_DIR$/bitcoinj-master/core/bitcoinj-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bitcoinj-master/examples/bitcoinj-examples.iml" filepath="$PROJECT_DIR$/bitcoinj-master/examples/bitcoinj-examples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bitcoinj-master/bitcoinj-parent.iml" filepath="$PROJECT_DIR$/bitcoinj-master/bitcoinj-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bitcoinj-master/tools/bitcoinj-tools.iml" filepath="$PROJECT_DIR$/bitcoinj-master/tools/bitcoinj-tools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bitcoinj-master/wallettemplate/wallettemplate.iml" filepath="$PROJECT_DIR$/bitcoinj-master/wallettemplate/wallettemplate.iml" />
+    </modules>
+  </component>
+</project>
